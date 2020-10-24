@@ -2,6 +2,7 @@ package org.acme;
 
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,9 +13,12 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.transaction.Transactional;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
 
 @RestController
-
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class ProdutoResource {
 	
 	@PostMapping("/product")
@@ -24,8 +28,8 @@ public class ProdutoResource {
 	}
 	
 	@GET
-	@PostMapping("/products")
-	public List<Produto> buscarTodosProdutos() throws NullPointerException{
+	@GetMapping("/products")
+	public List<Produto> buscarTodosProdutos(){
 		
 	return Produto.listAll();
 	
